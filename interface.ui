@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TaskMaster Pro - Gestión de Tareas</string>
+  </property>
+  <property name="styleSheet">
+   <string>QMainWindow {
+    background-color: #F9FAFB;
+}
+
+#leftSidebar, #rightSidebar {
+    background-color: #FFFFFF;
+    border-right: 1px solid #E5E7EB;
+    padding: 20px;
+}
+
+#rightSidebar {
+    border-right: none;
+    border-left: 1px solid #E5E7EB;
+}
+
+#mainContent {
+    background-color: #F9FAFB;
+    padding: 20px;
+}
+
+QLineEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #374151;
+}
+
+QLineEdit:focus {
+    border-color: #2563EB;
+    outline: none;
+}
+
+QPushButton {
+    background-color: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #1D4ED8;
+}
+
+QPushButton:pressed {
+    background-color: #1E40AF;
+}
+
+QListWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+QLabel {
+    color: #374151;
+    font-size: 14px;
+}
+
+QComboBox {
+    background-color: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #374151;
+}
+
+QComboBox:focus {
+    border-color: #2563EB;
+}
+
+QDateEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #374151;
+}
+
+QDateEdit:focus {
+    border-color: #2563EB;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="leftSidebar">
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="leftSidebarLayout">
+       <item>
+        <widget class="QLabel" name="appTitleLabel">
+         <property name="text">
+          <string>📋 To-do-app</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 18px; font-weight: bold; color: #1F2937; margin-bottom: 20px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="quickTaskInput">
+         <property name="placeholderText">
+          <string>Agregar nueva tarea...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="quickAddButton">
+         <property name="text">
+          <string>+ Agregar Tarea</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="searchInput">
+         <property name="placeholderText">
+          <string>🔍 Buscar tareas...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="statsLabel">
+         <property name="text">
+          <string>📊 0/0 tareas completadas</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 12px; color: #6B7280;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="productivityLabel">
+         <property name="text">
+          <string>⚡ Productividad: 0%</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 12px; color: #6B7280;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="mainContent">
+      <layout class="QVBoxLayout" name="mainContentLayout">
+       <item>
+        <widget class="QListWidget" name="tasksList"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="rightSidebar">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="rightSidebarLayout">
+       <item>
+        <widget class="QLabel" name="filtersLabel">
+         <property name="text">
+          <string>🔧 Filtros</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 16px; font-weight: bold; color: #1F2937; margin-bottom: 15px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="statusFilterLabel">
+         <property name="text">
+          <string>Estado:</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 12px; color: #6B7280; margin-bottom: 5px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="statusFilterCombo">
+         <item>
+          <property name="text">
+           <string>Todas las tareas</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Pendientes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Completadas</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="filterSpacer1">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="dateFilterLabel">
+         <property name="text">
+          <string>Filtrar por fecha:</string>
+         </property>
+         <property name="styleSheet">
+          <string>font-size: 12px; color: #6B7280; margin-bottom: 5px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="dateFilterTypeCombo">
+         <item>
+          <property name="text">
+           <string>Todas las fechas</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Creadas hoy</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Esta semana</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Este mes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rango personalizado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="customDateWidget">
+         <property name="visible">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="customDateLayout">
+          <item>
+           <widget class="QLabel" name="fromDateLabel">
+            <property name="text">
+             <string>Desde:</string>
+            </property>
+            <property name="styleSheet">
+             <string>font-size: 11px; color: #6B7280;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="fromDateEdit">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="toDateLabel">
+            <property name="text">
+             <string>Hasta:</string>
+            </property>
+            <property name="styleSheet">
+             <string>font-size: 11px; color: #6B7280;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="toDateEdit">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="filterSpacer2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clearFiltersButton">
+         <property name="text">
+          <string>🗑️ Limpiar Filtros</string>
+         </property>
+         <property name="styleSheet">
+          <string>background-color: #6B7280; color: white;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="rightSidebarSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
